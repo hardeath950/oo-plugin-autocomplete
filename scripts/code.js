@@ -23,6 +23,8 @@
 	{
 		if (!window.isInit)
 		{
+			console.log("Code plugin init");
+			console.log(window.parent)
 			window.isInit = true;
 
 			window.Asc.plugin.currentText = "";
