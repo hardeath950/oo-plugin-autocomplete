@@ -15,7 +15,7 @@
  * limitations under the License.
  *
  */
-(function(window, undefined){
+ (function(window, undefined){
 
 	window.isInit = false;
 
@@ -23,9 +23,14 @@
 	{
 		if (!window.isInit)
 		{
-			console.log("Code plugin init");
-			console.log(window.parent)
 			window.isInit = true;
+			
+			if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.dictionary && g_dictionary && window.Asc.plugin.info.userId.dictionary.length != g_dictionary.length) {
+    	        console.log('start to replace plugin dictionary')
+    	        g_dictionary = window.Asc.plugin.info.userId.dictionary
+    	        console.log(g_dictionary)
+    	        console.log('replaced')
+    	    }
 
 			window.Asc.plugin.currentText = "";
 			window.Asc.plugin.createInputHelper();
@@ -55,6 +60,9 @@
 
 	window.Asc.plugin.event_onInputHelperInput = function(data)
 	{
+	    console.log('working')
+	    console.log(window.Asc.plugin.info.userId)
+	    
 		if (data.add)
 			window.Asc.plugin.currentText += data.text;
 		else
@@ -70,7 +78,7 @@
 				window.Asc.plugin.currentText = window.Asc.plugin.currentText.substr(lastIndexSpace + 1);
 		}
 
-		if (window.Asc.plugin.currentText.length < 3)
+		if (window.Asc.plugin.currentText.length < 2)
 		{
 			window.Asc.plugin.getInputHelper().unShow();
 			return;
@@ -122,6 +130,8 @@
 		g_dictionary.sort();
 
 		var textFound = text.toLowerCase();
+		
+		console.log(textFound)
 
 		var start = 0;
 		var end = g_dictionary.length - 1;
