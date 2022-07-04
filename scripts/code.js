@@ -26,10 +26,7 @@
 			window.isInit = true;
 			
 			if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.dictionary && g_dictionary && window.Asc.plugin.info.userId.dictionary.length != g_dictionary.length) {
-    	        console.log('start to replace plugin dictionary')
     	        g_dictionary = window.Asc.plugin.info.userId.dictionary
-    	        console.log(g_dictionary)
-    	        console.log('replaced')
     	    }
 
 			window.Asc.plugin.currentText = "";
