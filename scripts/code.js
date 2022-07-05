@@ -15,7 +15,7 @@
  * limitations under the License.
  *
  */
- (function(window, undefined){
+(function(window, undefined){
 
 	window.isInit = false;
 
@@ -56,10 +56,7 @@
 	};
 
 	window.Asc.plugin.event_onInputHelperInput = function(data)
-	{
-	    console.log('working')
-	    console.log(window.Asc.plugin.info.userId)
-	    
+	{	    
 		if (data.add)
 			window.Asc.plugin.currentText += data.text;
 		else
@@ -124,8 +121,7 @@
 			return;
 
 		window.isAutoCompleteReady = true;
-		g_dictionary.sort();
-
+		
 		var textFound = text.toLowerCase();
 		
 		console.log(textFound)
@@ -186,3 +182,4 @@
 	};
 
 })(window, undefined);
+
