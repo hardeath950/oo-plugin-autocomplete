@@ -36,9 +36,9 @@
             // START VAR REPLACE
             if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.replace) {
                 // ITERATE RAPLACE ARRAY
-                for (window.Asc.plugin.info.userId.replace of replace) {
+                for (let replace of window.Asc.plugin.info.userId.replace ) {
                    
-                    var oProperties = {
+                    let oProperties = {
                         "searchString"  : replace.key,
                         "replaceString" : replace.value,
                         "matchCase"     : false
@@ -102,9 +102,9 @@
 		{
 			window.Asc.plugin.getInputHelper().unShow();
 		}
-		else
-		{
+		else {
 			var items = [];
+			
 			for (var i = 0; i < variants.length; i++) {
 				items.push({ text : variants[i] });
 			}
