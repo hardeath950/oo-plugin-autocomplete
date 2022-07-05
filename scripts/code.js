@@ -36,17 +36,17 @@
             // START VAR REPLACE
             if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.replace) {
                 // ITERATE RAPLACE ARRAY
-                for (let index = 0; index < window.Asc.plugin.info.userId.replace.length; index++) {
-                    const element = window.Asc.plugin.info.userId.replace[index];
+                for (window.Asc.plugin.info.userId.replace of replace) {
+                   
                     var oProperties = {
-                        "searchString"  : element.key,
-                        "replaceString" : element.value,
+                        "searchString"  : replace.key,
+                        "replaceString" : replace.value,
                         "matchCase"     : false
                     };
-            		// CALL REPLACE METHOD
-                    window.Asc.plugin.executeMethod("SearchAndReplace", [oProperties], function() {
-        				// window.Asc.plugin.executeCommand("close", "");
-                    });
+									// CALL REPLACE METHOD
+									window.Asc.plugin.executeMethod("SearchAndReplace", [oProperties], function() {
+
+									});
                 }
                 // END ITERATION
             }
@@ -105,8 +105,7 @@
 		else
 		{
 			var items = [];
-			for (var i = 0; i < variants.length; i++)
-			{
+			for (var i = 0; i < variants.length; i++) {
 				items.push({ text : variants[i] });
 			}
 
