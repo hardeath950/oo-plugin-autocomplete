@@ -15,7 +15,7 @@
  * limitations under the License.
  *
  */
-(function(window, undefined){
+ (function(window, undefined){
 
 	window.isInit = false;
 
@@ -24,7 +24,7 @@
 		if (!window.isInit)
 		{
 			window.isInit = true;
-			
+
 			if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.dictionary && g_dictionary && window.Asc.plugin.info.userId.dictionary.length != g_dictionary.length) {
     	        g_dictionary = window.Asc.plugin.info.userId.dictionary
     	    }
@@ -32,6 +32,25 @@
 			window.Asc.plugin.currentText = "";
 			window.Asc.plugin.createInputHelper();
 			window.Asc.plugin.getInputHelper().createWindow();
+			
+            // START VAR REPLACE
+            if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.replace) {
+                // ITERATE RAPLACE ARRAY
+                for (let index = 0; index < window.Asc.plugin.info.userId.replace.length; index++) {
+                    const element = window.Asc.plugin.info.userId.replace[index];
+                    var oProperties = {
+                        "searchString"  : element.key,
+                        "replaceString" : element.value,
+                        "matchCase"     : false
+                    };
+            		// CALL REPLACE METHOD
+                    window.Asc.plugin.executeMethod("SearchAndReplace", [oProperties], function() {
+        				// window.Asc.plugin.executeCommand("close", "");
+                    });
+                }
+                // END ITERATION
+            }
+            // END VAR REPLACE
 		}
 	};
 
@@ -123,9 +142,6 @@
 		window.isAutoCompleteReady = true;
 		
 		var textFound = text.toLowerCase();
-		
-		console.log(textFound)
-
 		var start = 0;
 		var end = g_dictionary.length - 1;
 		var index = 0;
