@@ -16,8 +16,8 @@
  *
  */
 
-(function (window, undefined) {
-	let dictionary = []
+ (function (window, undefined) {
+	let dictionary = ['z']
 
 	window.isInit = false;
 
@@ -25,7 +25,7 @@
 		if (!window.isInit) {
 			window.isInit = true;
 
-			if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.dictionary)
+			if (window.Asc.plugin.info.userId && window.Asc.plugin.info.userId.dictionary && window.Asc.plugin.info.userId.dictionary.length)
 				dictionary = window.Asc.plugin.info.userId.dictionary
 			
 			window.Asc.plugin.currentText = "";
@@ -41,7 +41,6 @@
 						"replaceString": replace.value,
 						"matchCase": false
 					};
-					console.log('replace', oProperties);
 					// CALL REPLACE METHOD
 					window.Asc.plugin.executeMethod("SearchAndReplace", [oProperties]);
 				}
