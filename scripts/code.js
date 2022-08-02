@@ -22,15 +22,32 @@
   window.isInit = false
 
 	// WHEN DOC IS LOADED
+  window.Asc.plugin.init = function (text) {
+    if (!window.isInit) {
+      window.isInit = true
+
+      if (
+        window.Asc.plugin.info.userId &&
+        window.Asc.plugin.info.userId.dictionary &&
+        window.Asc.plugin.info.userId.dictionary.length
+      )
+        dictionary = window.Asc.plugin.info.userId.dictionary
+				
+      window.Asc.plugin.currentText = ''
+      window.Asc.plugin.createInputHelper()
+      window.Asc.plugin.getInputHelper().createWindow()
+
+      
+    }
+  }
+
+	// DOC LOADED EVENT
 	window.Asc.plugin.event_onDocumentContentReady = function() {
     // START VAR REPLACE
 		if (
 			window.Asc.plugin.info.userId &&
 			window.Asc.plugin.info.userId.replace
 		) {
-			console.log('doc is full loaded')
-			console.log('replace list: ')
-			console.log(window.Asc.plugin.info.userId.replace)
 			setTimeout(function () {
 				// ITERATE RAPLACE ARRAY
 				for (let replace of window.Asc.plugin.info.userId.replace) {
@@ -46,29 +63,8 @@
 			}, 1000)        
 		}
 		// END VAR REPLACE
-};
-
-  window.Asc.plugin.init = function (text) {
-    if (!window.isInit) {
-      window.isInit = true
-
-      if (
-        window.Asc.plugin.info.userId &&
-        window.Asc.plugin.info.userId.dictionary &&
-        window.Asc.plugin.info.userId.dictionary.length
-      )
-        dictionary = window.Asc.plugin.info.userId.dictionary
-			
-
-			console.log('dictionart plugin is loaded')
-
-      window.Asc.plugin.currentText = ''
-      window.Asc.plugin.createInputHelper()
-      window.Asc.plugin.getInputHelper().createWindow()
-
-      
-    }
-  }
+	};
+	// ___END DOC LOADED EVENT
 
   window.Asc.plugin.button = function (id) {
     this.executeCommand('close', '')
